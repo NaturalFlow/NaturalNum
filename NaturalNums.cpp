@@ -6,37 +6,17 @@ Natural::Natural(unsigned int num) {
 BigNatural factorial() {
 
 }
-bool Natural::is_perfect(int n) {
-    unsigned int soma;
-    if(n & 1 == 0)
+bool Natural::is_perfect(unsigned int n) {
+    std::vector<unsigned int> perfectNums = {6, 28, 496, 8128, 33550336};
+    if(n & 1)
         return false;
-    for(unsigned int i = 0; i < n; i++) {
-        if(n % i == 0) {
-            soma += i;
-        }
-    }
-    return soma == n;
+    return std::binary_search(perfectNums.begin(),perfectNums.end(),n);
 }
 bool Natural::is_perfect() {
-    unsigned int soma;
-    if(num & 1 == 0)
+    std::vector<unsigned int> perfectNums = {6, 28, 496, 8128, 33550336};
+    if(num & 1)
         return false;
-    for(unsigned int i = 0; i < num; i++) {
-        if(num % i == 0) {
-            soma += i;
-        }
-    }
-    return soma == num;
-
-// Since was proved by Euclides that if (2^p)-1 is prime therefore 2^(p-1)*(2^p)-1 is perfect
-/* So I'm looking for Mersenne primes
-    if(num & 1 == 0)
-        return false;
-    else {
-
-    }
-    return true;
-    */
+    return std::binary_search(perfectNums.begin(),perfectNums.end(),num);
 }
 bool Natural::is_perfect_square(int n) {
     unsigned short lastDigit = n %10;
@@ -97,7 +77,7 @@ bool Natural::is_prime() {
     return true;
 // I believe in Riemann ...
 /* Jim Sinclair 7 prime base
-    EM CONSTRUÇAO MILLER RABIN
+    EM CONSTRUÃ‡AO MILLER RABIN
     const primesBase[] = {2, 325, 9375, 28178, 450775, 9780504,1795265022};
     for(unsigned int i = 0 ; i < 7; i++) {
         if(num % primesBase[i] == 0)
