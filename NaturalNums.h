@@ -10,7 +10,7 @@
 class Natural;
 class BigNatural;
 
-class Numbers {
+class Number {
 public:
     virtual BigNatural factorial();
     virtual bool is_perfect();
@@ -24,7 +24,7 @@ public:
     virtual unsigned int mmc(Natural k);
 };
 
-class BigNatural:Numbers {
+class BigNatural:Number {
 private:
     std::vector<unsigned short> num;
 public:
@@ -56,7 +56,7 @@ public:
 
     };
 };
-class Natural:Numbers {
+class Natural:Number {
 private:
     unsigned int num;
 public:
