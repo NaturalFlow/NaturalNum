@@ -7,11 +7,37 @@
 #include <vector>
 #include <iostream>
 
+class Natural;
+class BigNatural;
 
-class BigNatural {
+class Numbers {
+public:
+    virtual BigNatural factorial();
+    virtual bool is_perfect();
+    virtual bool is_perfect_square();
+    virtual bool is_palindrome();
+    virtual bool is_prime();
+    virtual std::string toHex();
+    virtual std::string toBin();
+    virtual std::string toOct();
+    virtual unsigned int mdc(Natural k);
+    virtual unsigned int mmc(Natural k);
+};
+
+class BigNatural:Numbers {
 private:
     std::vector<unsigned short> num;
 public:
+    BigNatural factorial();
+    bool is_perfect();
+    bool is_perfect_square();
+    bool is_palindrome();
+    bool is_prime();
+    std::string toHex();
+    std::string toBin();
+    std::string toOct();
+    BigNatural mdc(Natural k);
+    BigNatural mmc(Natural k);
     BigNatural operator *(BigNatural a);
 
     friend std::ostream & operator << (std::ostream& out, const BigNatural& object) {
@@ -30,7 +56,7 @@ public:
 
     };
 };
-class Natural {
+class Natural:Numbers {
 private:
     unsigned int num;
 public:
