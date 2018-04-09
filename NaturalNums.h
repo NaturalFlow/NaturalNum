@@ -1,6 +1,7 @@
 #ifndef NATURALNUMS_H_INCLUDED
 #define NATURALNUMS_H_INCLUDED
 
+#include <algorithm>
 #include <sstream>
 #include <string>
 #include <random>
