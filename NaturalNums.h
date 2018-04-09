@@ -4,14 +4,32 @@
 #include <sstream>
 #include <string>
 #include <random>
-
+#include <vector>
+#include <iostream>
 
 
 class BigNatural {
+private:
+    std::vector<unsigned short> num;
 public:
-    unsigned short bigN[1000];
-};
+    BigNatural operator *(BigNatural a);
 
+    friend std::ostream & operator << (std::ostream& out, const BigNatural& object) {
+        for(const auto& item : object.num) {
+            out << item;
+        }
+        return out;
+    };
+    friend std::istream & operator >> (std::istream& in,  BigNatural& object) {
+        std::string digits;
+        in >> digits;
+        for(auto digit : digits) {
+            object.num.push_back(digit);
+        }
+        return in;
+
+    };
+};
 class Natural {
 private:
     unsigned int num;
