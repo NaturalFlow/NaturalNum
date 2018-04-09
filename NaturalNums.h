@@ -20,8 +20,6 @@ public:
     virtual std::string toHex();
     virtual std::string toBin();
     virtual std::string toOct();
-    virtual unsigned int mdc(Natural k);
-    virtual unsigned int mmc(Natural k);
 };
 
 class BigNatural:Number {
