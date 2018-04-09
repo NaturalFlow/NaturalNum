@@ -38,7 +38,7 @@ public:
     std::string toOct();
     BigNatural mdc(Natural k);
     BigNatural mmc(Natural k);
-    BigNatural operator *(BigNatural a);
+    BigNatural operator * (BigNatural a);
 
     friend std::ostream & operator << (std::ostream& out, const BigNatural& object) {
         for(const auto& item : object.num) {
