@@ -79,7 +79,7 @@ bool Natural::is_prime() {
     return true;
 // I believe in Riemann ...
 /* Jim Sinclair 7 prime base
-    EM CONSTRUÇAO MILLER RABIN
+    EM CONSTRUÃ‡AO MILLER RABIN
     const primesBase[] = {2, 325, 9375, 28178, 450775, 9780504,1795265022};
     for(unsigned int i = 0 ; i < 7; i++) {
         if(num % primesBase[i] == 0)
@@ -122,10 +122,28 @@ std::string Natural::toBin() {
 std::string Natural::toOct() {
 }
 unsigned int Natural::mdc(Natural k) {
-
+    int auxN1 = num;
+    int auxN2 = k.num;
+    while (auxN1 != auxN2) {
+        if(auxN1 > auxN2)
+            auxN1 = auxN1-auxN2;
+        else
+            auxN2 = auxN2-auxN1;
+      }
+      return auxN1;
 }
 unsigned int Natural::mmc(Natural k) {
-
+    unsigned int maior = num > k.num ? num : k.num;
+    unsigned int menor = num > k.num ? k.num : num;
+    if(maior%menor == 0)
+        return maior;
+    if(maior%menor != 0 && menor%maior != 0)
+        return maior*menor;
+}
+bool Natural::prime_relative(Natural k) {
+    if(num%k.num != 0 && k.num%num != 0)
+        return true;
+    return false;
 }
 void Natural::set_num(unsigned int num) {
     this->num = num;
